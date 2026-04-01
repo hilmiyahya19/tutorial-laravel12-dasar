@@ -1,6 +1,6 @@
 <x-layout>
-    <h1>Welcome to Tutorial Laravel with Kenapa Coding</h1>
+    <h1 class="text-white">Welcome to Tutorial Laravel with Kenapa Coding</h1>
     <x-slot:footer>
-        <strong>Home page.</strong>
+        <strong class="bg-white">Home page.</strong>
     </x-slot:footer>
 </x-layout>

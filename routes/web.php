@@ -15,9 +15,9 @@ Route::get('/about', function () {
 });
 Route::get('/player', function () {
     $data = [
-        ['id' => 1, 'name' => 'Pedri', 'score' => 90],
-        ['id' => 2, 'name' => 'Yamal', 'score' => 95],
-        ['id' => 3, 'name' => 'Fermin', 'score' => 80],
+        ['id' => 1, 'name' => 'Pedri', 'date_of_birth' => '2002-11-25', 'position' => 'CM', 'market_value' => 150000000],
+        ['id' => 2, 'name' => 'Yamal', 'date_of_birth' => '2004-02-16', 'position' => 'RW', 'market_value' => 200000000],
+        ['id' => 3, 'name' => 'Fermin', 'date_of_birth' => '2001-07-12', 'position' => 'AM', 'market_value' => 100000000],
     ];
     return view('player.index', ['data' => $data]);
 });
