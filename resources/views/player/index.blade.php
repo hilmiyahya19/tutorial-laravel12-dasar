@@ -10,6 +10,7 @@
                     <th class="px-3 py-2 whitespace-nowrap">Date of Birth</th>
                     <th class="px-3 py-2 whitespace-nowrap">Position</th>
                     <th class="px-3 py-2 whitespace-nowrap">Market Value</th>
+                    <th class="px-3 py-2 whitespace-nowrap">Details</th>
                 </tr>
             </thead>
 
@@ -20,10 +21,14 @@
                         <td class="px-3 py-2 whitespace-nowrap">{{ $player['date_of_birth'] }}</td>
                         <td class="px-3 py-2 whitespace-nowrap">{{ $player['position'] }}</td>
                         <td class="px-3 py-2 whitespace-nowrap">{{ $player['market_value'] }}</td>
+                        <td class="px-3 py-2 whitespace-nowrap"><a href="{{ route('player.show', $player['id']) }}" class="text-teal-500 hover:text-teal-700">View Details</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="py-10">
+        {{ $data->appends(request()->query())->links() }}
     </div>
     <x-slot:footer>
         <strong>Player page.</strong>
