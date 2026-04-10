@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coach;
 use App\Models\Player;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $data = Player::orderBy('market_value', 'desc')->paginate(10);
+        $data = Player::with('coach')->orderBy('market_value', 'desc')->paginate(10);
         return view('player.index', ['data' => $data]);
     }
 
@@ -21,7 +22,8 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        $coaches = Coach::all();
+        return view('player.create', ['coaches' => $coaches]);
     }
 
     /**
@@ -37,7 +39,7 @@ class PlayerController extends Controller
      */
     public function show(string $id)
     {
-        $player = Player::findOrFail($id);
+        $player = Player::with('coach')->findOrFail($id);
         return view('player.show', ['player' => $player]);
     }
 

@@ -6,29 +6,35 @@
     <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt class="font-medium text-gray-900">Name</dt>
 
-      <dd class="text-gray-700 sm:col-span-2">{{ $player['name'] }}</dd>
+      <dd class="text-gray-700 sm:col-span-2">{{ $player->name }}</dd>
     </div>
 
     <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt class="font-medium text-gray-900">Date of Birth</dt>
 
-      <dd class="text-gray-700 sm:col-span-2">{{ $player['date_of_birth'] }}</dd>
+      <dd class="text-gray-700 sm:col-span-2">{{ $player->date_of_birth }}</dd>
     </div>
 
     <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt class="font-medium text-gray-900">Position</dt>
 
-      <dd class="text-gray-700 sm:col-span-2">{{ $player['position'] }}</dd>
+      <dd class="text-gray-700 sm:col-span-2">{{ $player->position }}</dd>
     </div>
 
     <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
       <dt class="font-medium text-gray-900">Market Value</dt>
 
-      <dd class="text-gray-700 sm:col-span-2">{{ $player['market_value'] }}</dd>
+      <dd class="text-gray-700 sm:col-span-2">{{ $player->market_value }}</dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Coach</dt>
+
+      <dd class="text-gray-700 sm:col-span-2">{{ $player->coach->name }}</dd>
     </div>
   </dl>
 </div>
     <x-slot:footer>
-        <strong>Player Detail page.</strong>
+        <strong>Player Detail page</strong>
     </x-slot:footer>
 </x-layout>

@@ -28,16 +28,20 @@
                             <x-nav-link class="text-gray-500 transition hover:text-gray-500/75" href="/" :active="request()->is('/')"> Home
                             </x-nav-link>
                         </li>
-                        <li>
+                        {{-- <li>
                             <x-nav-link class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('about') }}" :active="request()->is('about')"> About
                             </x-nav-link>
                         </li>
                         <li>
                             <x-nav-link class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('contact') }}" :active="request()->is('contact')"> Contact
                             </x-nav-link>
+                        </li> --}}
+                        <li>
+                            <x-nav-link class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('player.create') }}" :active="request()->routeIs('player.create')"> Create Player
+                            </x-nav-link>
                         </li>
                         <li>
-                            <x-nav-link class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('player.index') }}" :active="request()->is('player')"> Player
+                            <x-nav-link class="text-gray-500 transition hover:text-gray-500/75" href="{{ route('player.index') }}" :active="request()->routeIs('player.index')"> Player List
                             </x-nav-link>
                         </li>
                     </ul>
@@ -68,10 +72,10 @@
             </div>
         </div>
     </header>
-    <main class="py-10 px-10 md:px-25">
+    <main class="mx-auto max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8 my-10">
         {{ $slot }}
     </main>
-    <footer class="py-10 px-10 md:px-25">
+    <footer class="mx-auto max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8 my-10">
         <p>This is footer from <span>{{ $footer }}</span></p>
     </footer>
 </body>

@@ -12,5 +12,10 @@ class Player extends Model
     // tapi ada cara yang lebih baik lagi, yaitu kita bisa membuat Model sekaligus Migrationnya, dengan cara php artisan make:model Player -m
 
     // mengatur field mana saja yang boleh diisi secara massal (mass assignment) pada model, Laravel hanya akan mengizinkan field yang ada di $fillable untuk disimpan ke database, Tanpa $fillable, user bisa saja kirim data tambahan yang tidak seharusnya diubah
-    protected $fillable = ['name', 'date_of_birth', 'position', 'market_value'];
+    protected $fillable = ['name', 'date_of_birth', 'position', 'market_value', 'coach_id'];
+
+    public function coach()
+    {
+        return $this->belongsTo(Coach::class);
+    }
 }
