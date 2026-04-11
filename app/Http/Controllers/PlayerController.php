@@ -31,15 +31,33 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|min:3',
+            'date_of_birth' => 'required|date',
+            'position' => 'required|string|min:2',
+            'market_value' => 'required|numeric|min:0|max:300000000',
+            'coach_id' => 'required|exists:coaches,id',
+        ]);
+
+        // dd($request->market_value);
+        Player::create([
+            'name' => $validatedData['name'],
+            'date_of_birth' => $validatedData['date_of_birth'],
+            'position' => $validatedData['position'],
+            'market_value' => $validatedData['market_value'],
+            'coach_id' => $validatedData['coach_id'],
+        ]);
+
+        return redirect()->route('player.index')->with('success', 'Player created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Player $player)
     {
-        $player = Player::with('coach')->findOrFail($id);
+        // $player = Player::with('coach')->findOrFail($id);
+        $player->load('coach');
         return view('player.show', ['player' => $player]);
     }
 
@@ -62,8 +80,10 @@ class PlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Player $player)
     {
-        //
+        // $player = Player::findOrFail($id);
+        $player->delete();
+        return redirect()->route('player.index')->with('success', 'Player deleted successfully');    
     }
 }
