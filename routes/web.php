@@ -19,10 +19,12 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::get('/player', [App\Http\Controllers\PlayerController::class, 'index'])->name('player.index');
-Route::post('/player', [App\Http\Controllers\PlayerController::class, 'store'])->name('player.store');
-Route::get('/player/create', [App\Http\Controllers\PlayerController::class, 'create'])->name('player.create');
-Route::get('/player/{player}', [App\Http\Controllers\PlayerController::class, 'show'])->name('player.show');
-// Route::get('/player/{id}/edit', [App\Http\Controllers\PlayerController::class, 'edit'])->name('player.edit');
-// Route::put('/player/{id}', [App\Http\Controllers\PlayerController::class, 'update'])->name('player.update');
-Route::delete('/player/{player}', [App\Http\Controllers\PlayerController::class, 'destroy'])->name('player.destroy');
+// Route::get('/player', [App\Http\Controllers\PlayerController::class, 'index'])->name('player.index');
+// Route::post('/player', [App\Http\Controllers\PlayerController::class, 'store'])->name('player.store');
+// Route::get('/player/create', [App\Http\Controllers\PlayerController::class, 'create'])->name('player.create');
+// Route::get('/player/{player}', [App\Http\Controllers\PlayerController::class, 'show'])->name('player.show');
+// Route::get('/player/{player}/edit', [App\Http\Controllers\PlayerController::class, 'edit'])->name('player.edit');
+// Route::put('/player/{player}', [App\Http\Controllers\PlayerController::class, 'update'])->name('player.update');
+// Route::delete('/player/{player}', [App\Http\Controllers\PlayerController::class, 'destroy'])->name('player.destroy');
+
+Route::resource('player', App\Http\Controllers\PlayerController::class);

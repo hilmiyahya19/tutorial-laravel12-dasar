@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    @if (session('success'))
-        <div id="flash" class="p-4 bg-green-50 text-green-500 text-center font-bold">
-            <p>{{ session('success') }}</p>
+   @if (session('success'))
+        <div 
+            x-data="{ show: true }"
+            x-init="setTimeout(() => show = false, 3000)"
+            x-show="show"
+            x-transition
+            class="bg-green-100 text-green-700 px-4 py-3 rounded mb-4 text-center"
+        >
+            {{ session('success') }}
         </div>
     @endif
     <header class="bg-white">

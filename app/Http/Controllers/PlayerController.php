@@ -64,17 +64,36 @@ class PlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Player $player)
     {
-        //
+        // $player = Player::findOrFail($id);
+        $coaches = Coach::all();
+        // return view('player.edit', ['player' => $player, 'coaches' => $coaches]); // sama dengan compact
+        return view('player.edit', compact('player', 'coaches'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Player $player)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|min:3',
+            'date_of_birth' => 'required|date',
+            'position' => 'required|string|min:2',
+            'market_value' => 'required|numeric|min:0|max:300000000',
+            'coach_id' => 'required|exists:coaches,id',
+        ]);
+
+        $player->update([
+            'name' => $validatedData['name'],
+            'date_of_birth' => $validatedData['date_of_birth'],
+            'position' => $validatedData['position'],
+            'market_value' => $validatedData['market_value'],
+            'coach_id' => $validatedData['coach_id'],
+        ]);
+
+        return redirect()->route('player.index')->with('success', 'Player updated successfully');
     }
 
     /**

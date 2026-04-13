@@ -34,11 +34,17 @@
         </div>
       </dl>
     </div>
-    <form action="{{ route('player.destroy', $player->id) }}" method="POST" class="mt-5">
+    <div class="mt-5 flex gap-4">
+    <a href="{{ route('player.edit', $player) }}"
+      class="mt-5 px-4 py-2 bg-yellow-500 text-white rounded inline-block">
+      Update Player
+    </a>
+    <form action="{{ route('player.destroy', $player) }}" method="POST" class="mt-5">
       @csrf
       @method('DELETE')
       <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded cursor-pointer">Delete Player</button>
     </form>
+    </div>
     <x-slot:footer>
         <strong>Player Detail page</strong>
     </x-slot:footer>
